@@ -1,21 +1,37 @@
-# Restaurant-Management-System
-Harvest Table: A Full-Stack Restaurant Management System I've built a comprehensive restaurant management system using Flask, SQLite, and modern web technologies.
-Core Features:
- Complete Order Management – From menu browsing to checkout, payment processing, and printable receipts
- REST API – JWT authentication, secure endpoints for orders, payments, analytics, and menu management
- Admin Dashboard – Manage menu items, categories, orders, users, and view key metrics
- Real-time Updates – Socket.IO integration for live order notifications
- Responsive Frontend – Server-rendered templates with custom CSS and vanilla JavaScript
-Tech Stack:
-- Backend: Flask with SQLAlchemy ORM
-- Database: SQLite with seeded demo data
-- API: RESTful endpoints with JWT & rate limiting, CORS support
-- Frontend: Jinja2 templates, responsive design
-- DevOps: Docker & Docker Compose for easy deployment
-- Additional: Socket.IO for live updates, payment scaffolding for Stripe/Cloudinary integration
-Key Highlights:
-• Non-destructive seeding – preserves admin edits across restarts
-• Production-ready structure with proper authentication & authorization
-• Cart management with localStorage persistence
-• Admin seed account included for immediate testing
-• Modular route structure for easy maintenance & scaling 
+# Harvest Table Restaurant Management System
+
+A Flask-based restaurant management system with a single project tree, server-rendered pages, SQLite data, JWT API routes, live order updates, and printable receipts.
+
+## What is included
+
+- Public restaurant pages built with Flask templates and custom CSS
+- REST API for auth, menu, categories, orders, payments, receipts, and analytics
+- SQLite + SQLAlchemy models with seed data
+- JWT auth, rate limiting, CORS, and Socket.IO wiring
+- Docker and Docker Compose for local startup
+
+## Local setup
+
+1. Create a virtual environment.
+2. Install dependencies from `requirements.txt`.
+3. Copy `.env.example` to `.env` and adjust values if needed.
+4. Run the app with `python app.py`.
+
+Admin seed account:
+
+- Email: `admin@restaurant.local`
+- Password: `Admin@12345`
+
+## API highlights
+
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `GET /api/menu`
+- `POST /api/orders`
+- `GET /api/receipts/<order_id>`
+
+## Notes
+
+Stripe, Cloudinary, and production-grade webhooks are scaffolded as integration points, but the project currently uses local demo behavior so the app remains easy to run.
+
+On startup, seed data is inserted only for missing records by default, so admin edits (for example dish image changes) are preserved across restarts. If you want startup seeding to overwrite existing seeded menu records, set `SEED_UPDATE_EXISTING=true` in your environment.
